@@ -1,0 +1,9 @@
+pip install Flask transformers librosa pydub numpy
+pip install flask_socketio
+
+pip install --upgrade gevent
+pip install eventlet
+pip install gunicorn
+
+
+pip install Flask transformers librosa pydub numpy
