@@ -58,6 +58,31 @@ D:.
 3. Click the "Upload" button.
 4. View the real-time progress and get the transcription result when the process completes.
 
+## Screenshots 🎨
+![image](https://github.com/user-attachments/assets/4bab2680-76d2-4880-8efd-8ed5bd5e57d5)
+
+## Contributing 👨‍💻
+1. Fork the repository 🍴
+    ```
+    Click the "Fork" button at the top-right of the repository page on GitHub
+    ```
+2. Create a feature branch:
+    ```
+    git checkout -b feature-name
+    ```
+3. Commit changes:
+    ```
+    git commit -m 'Add some feature'
+    ```
+4. Push to the branch:
+    ```
+    git push origin feature-name
+    ```
+5. Open a pull request 📬
+    ```
+    Go to your repository on GitHub and click "Compare & pull request"
+    ```
+
 ## License 📜
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
