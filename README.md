@@ -59,7 +59,7 @@ D:.
 4. View the real-time progress and get the transcription result when the process completes.
 
 ## Screenshots 🎨
-![image](https://github.com/user-attachments/assets/1fe2561a-a2b9-47ba-a8e6-913609f6aa85)
+![image](https://github.com/user-attachments/assets/bccc7d60-0e3c-405d-b083-edac780ab746)
 
 
 
