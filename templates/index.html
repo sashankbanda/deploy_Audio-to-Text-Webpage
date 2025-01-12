@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Transcription</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Audio Transcription</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" id="audio-file" name="file" accept="audio/*" required>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="progress-container">
+        <progress id="upload-progress" value="0" max="100"></progress>
+        <p id="progress-status">Waiting for file upload...</p>
+    </div>
+    <div id="transcription-box">
+        <h2>Process Updates:</h2>
+        <div id="process-updates"></div>
+    </div>
+    <div id="result-box">
+        <h2>Transcription Result:</h2>
+        <div id="transcription-result"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
