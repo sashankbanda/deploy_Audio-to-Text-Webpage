@@ -39,10 +39,32 @@ button:hover {
 #upload-progress {
     width: 100%;
     margin-top: 10px;
+    height: 20px; /* Adjust the height as needed */
+    border-radius: 10px; /* Rounded ends */
+    background-color: #555; /* Background color when empty */
+    appearance: none; /* Remove browser-specific styling */
+}
+
+#upload-progress::-webkit-progress-bar {
+    border-radius: 10px;
+    background-color: #555;
+}
+
+#upload-progress::-webkit-progress-value {
+    border-radius: 10px;
+    background-color: blue; /* Default color for the bar */
+    transition: width 0.4s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+#upload-progress::-moz-progress-bar {
+    border-radius: 10px;
+    background-color: blue; /* Default color for the bar */
+    transition: width 0.4s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 #progress-status {
     margin-top: 10px;
+    font-size: 14px;
 }
 
 /* Process Updates Box */

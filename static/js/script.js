@@ -20,31 +20,50 @@ form.addEventListener('submit', (event) => {
 
     // Reset progress and result
     progressBar.value = 0;
+    progressBar.style.backgroundColor = 'blue'; // Keep bar blue
     progressStatus.innerText = "Uploading file...";
     processUpdates.innerHTML = "";
     transcriptionResult.innerHTML = "";
 
-    // Upload the file
-    fetch('/upload', {
-        method: 'POST',
-        body: formData,
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to upload file.");
+    // Create XMLHttpRequest for progress tracking
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', '/upload', true);
+
+    // Update progress bar during upload
+    xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+            const percentComplete = Math.round((event.loaded / event.total) * 100);
+            progressBar.value = percentComplete;
+            progressStatus.innerText = `Uploading file... (${percentComplete}%)`;
+        }
+    };
+
+    // Handle upload completion
+    xhr.onload = () => {
+        if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.transcription) {
+                transcriptionResult.innerHTML = `<p>${response.transcription}</p>`;
+            } else if (response.error) {
+                transcriptionResult.innerHTML = `<p>Error: ${response.error}</p>`;
             }
-            return response.json();
-        })
-        .then(data => {
-            if (data.transcription) {
-                transcriptionResult.innerHTML = `<p>${data.transcription}</p>`;
-            } else if (data.error) {
-                transcriptionResult.innerHTML = `<p>Error: ${data.error}</p>`;
-            }
-        })
-        .catch(error => {
-            transcriptionResult.innerHTML = `<p>Error: ${error.message}</p>`;
-        });
+            progressStatus.innerText = "Uploaded successfully";
+            progressBar.style.backgroundColor = 'blue'; // Success - blue bar
+        } else {
+            transcriptionResult.innerHTML = `<p>Error: Failed to upload file.</p>`;
+        }
+    };
+
+    // Handle errors
+    xhr.onerror = () => {
+        transcriptionResult.innerHTML = `<p>Error: Network error occurred.</p>`;
+        progressStatus.innerText = "Error during upload.";
+        progressBar.style.backgroundColor = 'red'; // Indicate error
+    };
+
+    // Send the form data
+    xhr.send(formData);
 });
 
 // Listen for real-time progress updates via SSE
@@ -58,14 +77,6 @@ eventSource.onmessage = (event) => {
 
     // Scroll to the latest update
     processUpdates.scrollTop = processUpdates.scrollHeight;
-
-    // Update progress bar (optional: use percentage updates if sent by server)
-    if (message.includes('%')) {
-        const percentage = parseInt(message.match(/\d+/), 10);
-        if (!isNaN(percentage)) {
-            progressBar.value = percentage;
-        }
-    }
 };
 
 // Handle SSE connection errors
