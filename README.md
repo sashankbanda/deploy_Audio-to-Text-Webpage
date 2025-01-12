@@ -37,7 +37,7 @@ D:.
 ## Installation 🛠️
 1. Clone the repository:
     ```
-    git clone https://github.com/sashankbanda/AudioToText.git
+    git clone https://github.com/sashankbanda/Audio-to-Text-Webpage.git
     ```
 
 2. Install the required dependencies:
