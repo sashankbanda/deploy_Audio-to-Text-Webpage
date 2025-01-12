@@ -37,7 +37,7 @@ D:.
 ## Installation 🛠️
 1. Clone the repository:
     ```
-    git clone https://github.com/sashankbanda/Audio-to-Text-Webpage.git
+    git clone https://github.com/sashankbanda/deploy_Audio-to-Text-Webpage.git
     ```
 
 2. Install the required dependencies:
@@ -59,11 +59,8 @@ D:.
 4. View the real-time progress and get the transcription result when the process completes.
 
 ## Screenshots 🎨
-<<<<<<< HEAD
 ![image](https://github.com/user-attachments/assets/bccc7d60-0e3c-405d-b083-edac780ab746)
-=======
-![image](https://github.com/user-attachments/assets/1fe2561a-a2b9-47ba-a8e6-913609f6aa85)
->>>>>>> 1ff7ff81d0367a54911aed4e153213dce098b024
+
 
 
 ## Contributing 👨‍💻
